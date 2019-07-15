@@ -6,6 +6,7 @@ A toolkit for evaluation of natural language generation (NLG), including BLEU, R
 Make sure the following environment is installed correctly on your machine.
 
 > python 2.7+
+
 > numpy
 
 If you want to use the METEOR metric, make sure the Java Runtime Environment is configured on your machine.
