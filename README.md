@@ -1,5 +1,5 @@
 # NLG-evaluation
-A toolkit for evaluation of natural language generation (NLG), including BLEU, ROGUR, METEOR, and CIDEr.
+A toolkit for evaluation of natural language generation (NLG), including BLEU, ROUGE, METEOR, and CIDEr.
 
 ## Requirements
 
