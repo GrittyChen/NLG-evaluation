@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from .bleu_scorer import BleuScorer
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+from Metrics.bleu.bleu_scorer import BleuScorer
 
 
-class Bleu:
+class Bleu(object):
+
     def __init__(self, n=4):
-        # default compute Blue score up to 4
+        # default compute BLEU score up to 4
         self._n = n
         self._hypo_for_image = {}
         self.ref_for_image = {}
 
     def compute_score(self, gts, res):
-
         bleu_scorer = BleuScorer(n=self._n)
+
         for idx in sorted(gts.keys()):
             hypo = res[idx]
             ref = gts[idx]

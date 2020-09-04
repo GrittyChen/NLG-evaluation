@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from .cider_scorer import CiderScorer
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+from Metrics.cider.cider_scorer import CiderScorer
 
 
 class Cider(object):
     """
     Main Class to compute the CIDEr metric
     """
+
     def __init__(self, test=None, refs=None, n=4, sigma=6.0):
         # set cider to sum over 1 to 4-grams
         self._n = n
@@ -16,8 +21,8 @@ class Cider(object):
     def compute_score(self, gts, res):
         """
         Main function to compute CIDEr score
-        :param  res: dictionary with key <image> and value <tokenized hypothesis / candidate sentence>
-        :param  gts: dictionary with key <image> and value <tokenized reference sentence>
+        :param  res: dict with value <tokenized candidate sentence>
+        :param  gts: dict with value <tokenized reference sentence>
         :return: cider (float): computed CIDEr score for the corpus
         """
 
@@ -28,16 +33,14 @@ class Cider(object):
             ref = gts[idx]
 
             # Sanity check.
-            assert(type(hypo) is list)
+            assert(isinstance(hypo, list))
+            assert(isinstance(ref, list))
             assert(len(hypo) == 1)
-            assert(type(ref) is list)
             assert(len(ref) > 0)
 
             cider_scorer += (hypo[0], ref)
 
-        (score, scores) = cider_scorer.compute_score()
-
-        return score, scores
+        return cider_scorer.compute_score()
 
     @staticmethod
     def method():
